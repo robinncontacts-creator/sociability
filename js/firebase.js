@@ -12,13 +12,14 @@
    ================================================ */
 
 // 🔧 REMPLACE CES VALEURS PAR TA CONFIG FIREBASE
-const FIREBASE_CONFIG = {
-  apiKey:            "REMPLACE_PAR_TA_API_KEY",
-  authDomain:        "REMPLACE.firebaseapp.com",
-  projectId:         "REMPLACE_PAR_TON_PROJECT_ID",
-  storageBucket:     "REMPLACE.appspot.com",
-  messagingSenderId: "REMPLACE",
-  appId:             "REMPLACE_PAR_TON_APP_ID",
+const firebaseConfig = {
+  apiKey: "AIzaSyBOXSYPTgBbpPB7Xwk3ik2GJw8VV8q8NBc",
+  authDomain: "sociability-1937b.firebaseapp.com",
+  projectId: "sociability-1937b",
+  storageBucket: "sociability-1937b.firebasestorage.app",
+  messagingSenderId: "708746609970",
+  appId: "1:708746609970:web:da032474ae8103906c832b",
+  measurementId: "G-XB92ES4BH3"
 };
 
 /* ---- Imports Firebase (CDN modulaire) ---- */
