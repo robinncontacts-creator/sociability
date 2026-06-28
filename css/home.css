@@ -1,0 +1,210 @@
+/* ================================================
+   home.css — Écran Accueil
+   Sociability App
+   ================================================ */
+
+/* ---- Hero ---- */
+.hero-section {
+  padding: 22px 20px 0;
+  flex-shrink: 0;
+}
+
+.greeting {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.hero-title .accent {
+  color: var(--purple-soft);
+}
+
+/* ---- Streak bar ---- */
+.streak-bar {
+  margin: 20px 20px 0;
+  background: var(--card);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.streak-icon {
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.streak-info {
+  flex: 1;
+}
+
+.streak-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 2px;
+}
+
+.streak-val {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.level-info {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.level-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.level-val {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--purple-soft);
+}
+
+/* ---- Barre XP ---- */
+.xp-bar-wrap {
+  margin: 14px 20px 0;
+  flex-shrink: 0;
+}
+
+.xp-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 7px;
+}
+
+.xp-track {
+  background: var(--card2);
+  border-radius: 20px;
+  height: 7px;
+  overflow: hidden;
+}
+
+.xp-fill {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, var(--purple), var(--cyan));
+  transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---- Carte de défi du jour ---- */
+.challenge-card {
+  margin: 0 20px 10px;
+  background: var(--card);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.1s;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Barre gauche colorée */
+.challenge-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--purple);
+  border-radius: 0 3px 3px 0;
+}
+
+.challenge-card:hover {
+  border-color: rgba(124, 58, 237, 0.5);
+}
+
+.challenge-card:active {
+  transform: scale(0.985);
+}
+
+/* Défi déjà complété */
+.challenge-card.done {
+  opacity: 0.55;
+  cursor: default;
+}
+.challenge-card.done::before {
+  background: var(--text-dim);
+}
+
+.ch-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.ch-badge {
+  background: var(--purple-pale);
+  color: var(--purple-soft);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ch-xp {
+  margin-left: auto;
+  color: var(--cyan);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ch-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 5px;
+  color: var(--text);
+}
+
+.ch-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* Icône "complété" */
+.ch-done-icon {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ch-done-icon i {
+  font-size: 13px;
+  color: #052e16;
+}

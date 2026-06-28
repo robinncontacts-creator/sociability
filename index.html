@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Sociability</title>
+  <meta name="description" content="Développe tes compétences sociales avec des défis progressifs" />
+  <meta name="theme-color" content="#0F0F1A" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/defis.css" />
+  <link rel="stylesheet" href="css/rank.css" />
+  <link rel="stylesheet" href="css/journal.css" />
+</head>
+<body>
+
+  <!-- ===== ÉCRAN : ACCUEIL ===== -->
+  <div class="screen active" id="s-home" role="main">
+
+    <div class="topbar">
+      <div class="logo">Sociability</div>
+      <div class="avatar-ring" id="avatar-ring" title="Mon profil">
+        <svg class="ring-svg" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true">
+          <circle cx="22" cy="22" r="19" fill="none" stroke="var(--purple-pale)" stroke-width="3"/>
+          <circle id="ring-arc" cx="22" cy="22" r="19" fill="none" stroke="var(--purple-soft)"
+            stroke-width="3" stroke-linecap="round"
+            stroke-dasharray="119.4" stroke-dashoffset="119.4"
+            transform="rotate(-90 22 22)" />
+        </svg>
+        <div class="avatar-inner" id="avatar-initials">R</div>
+      </div>
+    </div>
+
+    <div class="hero-section">
+      <div class="greeting" id="greeting">Bonjour 👋</div>
+      <div class="hero-title">Prêt pour ton<br><span class="accent">défi du jour ?</span></div>
+    </div>
+
+    <!-- Streak + niveau -->
+    <div class="streak-bar">
+      <div class="streak-icon" aria-hidden="true">🔥</div>
+      <div class="streak-info">
+        <div class="streak-label">Série en cours</div>
+        <div class="streak-val" id="streak-count">0 jour</div>
+      </div>
+      <div class="level-info">
+        <div class="level-label">Niveau</div>
+        <div class="level-val" id="level-display">Lv. 1</div>
+      </div>
+    </div>
+
+    <!-- Barre XP -->
+    <div class="xp-bar-wrap">
+      <div class="xp-labels">
+        <span id="xp-current-label">XP : 0</span>
+        <span id="xp-next-label">→ Lv. 2</span>
+      </div>
+      <div class="xp-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="xp-track">
+        <div class="xp-fill" id="xp-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- Défis du jour -->
+    <div class="section-title">Défis du jour</div>
+    <div id="daily-challenges-list"></div>
+
+  </div>
+
+  <!-- ===== ÉCRAN : DÉFIS ===== -->
+  <div class="screen" id="s-defis">
+
+    <div class="topbar">
+      <div class="page-title">Défis</div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" role="tab" aria-selected="true" onclick="App.switchTab(this,'tous')">Tous</button>
+      <button class="tab" role="tab" aria-selected="false" onclick="App.switchTab(this,'social')">Social</button>
+      <button class="tab" role="tab" aria-selected="false" onclick="App.switchTab(this,'courage')">Courage</button>
+      <button class="tab" role="tab" aria-selected="false" onclick="App.switchTab(this,'groupe')">Groupe</button>
+    </div>
+
+    <div class="defi-grid" id="defi-grid"></div>
+
+  </div>
+
+  <!-- ===== ÉCRAN : CLASSEMENT ===== -->
+  <div class="screen" id="s-rank">
+
+    <div class="rank-header">
+      <div class="page-title">🏆 Classement</div>
+      <div class="rank-subtitle" id="rank-subtitle">Cette semaine</div>
+    </div>
+
+    <div class="podium" id="podium" aria-label="Top 3"></div>
+
+    <div class="rank-list" id="rank-list"></div>
+
+  </div>
+
+  <!-- ===== ÉCRAN : JOURNAL ===== -->
+  <div class="screen" id="s-journal">
+
+    <div class="topbar">
+      <div>
+        <div class="page-title">Mon journal</div>
+        <div class="page-subtitle">Trace ton chemin social</div>
+      </div>
+    </div>
+
+    <!-- Humeur du jour -->
+    <div class="mood-section">
+      <div class="mood-title">Comment tu te sens aujourd'hui ?</div>
+      <div class="mood-btns" role="group" aria-label="Sélectionner ton humeur">
+        <button class="mood-btn" aria-label="Anxieux" onclick="Journal.selectMood(this,'😰')">😰</button>
+        <button class="mood-btn" aria-label="Triste" onclick="Journal.selectMood(this,'😟')">😟</button>
+        <button class="mood-btn" aria-label="Neutre" onclick="Journal.selectMood(this,'😐')">😐</button>
+        <button class="mood-btn sel" aria-label="Bien" onclick="Journal.selectMood(this,'🙂')">🙂</button>
+        <button class="mood-btn" aria-label="Super" onclick="Journal.selectMood(this,'😄')">😄</button>
+      </div>
+    </div>
+
+    <div class="journal-actions">
+      <button class="new-entry-btn" onclick="Journal.openModal()">
+        <i class="ti ti-pencil-plus" aria-hidden="true"></i> Écrire une entrée
+      </button>
+    </div>
+
+    <div class="section-title">Entrées récentes</div>
+    <div class="journal-entries" id="journal-list"></div>
+
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="bottom-nav" aria-label="Navigation principale">
+    <button class="nav-btn active" onclick="App.nav('home', this)" aria-label="Accueil">
+      <i class="ti ti-home" aria-hidden="true"></i>
+      <span>Accueil</span>
+    </button>
+    <button class="nav-btn" onclick="App.nav('defis', this)" aria-label="Défis">
+      <i class="ti ti-flame" aria-hidden="true"></i>
+      <span>Défis</span>
+    </button>
+    <button class="nav-btn" onclick="App.nav('rank', this)" aria-label="Classement">
+      <i class="ti ti-trophy" aria-hidden="true"></i>
+      <span>Classement</span>
+    </button>
+    <button class="nav-btn" onclick="App.nav('journal', this)" aria-label="Journal">
+      <i class="ti ti-notebook" aria-hidden="true"></i>
+      <span>Journal</span>
+    </button>
+  </nav>
+
+  <!-- ===== MODAL : DÉFI ===== -->
+  <div class="modal-bg" id="defi-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <div class="modal-handle" aria-hidden="true"></div>
+      <div class="modal-emoji" id="modal-emoji"></div>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <p class="modal-desc" id="modal-desc"></p>
+      <textarea class="modal-textarea" id="modal-textarea"
+        placeholder="Comment ça s'est passé ? (optionnel)" rows="3"
+        aria-label="Note sur le défi"></textarea>
+      <div class="modal-xp" id="modal-xp"></div>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="Defis.closeModal()">Annuler</button>
+        <button class="btn-confirm" id="modal-confirm-btn" onclick="Defis.confirmDefi()">
+          Marquer comme fait ✓
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL : JOURNAL ===== -->
+  <div class="modal-bg" id="journal-modal" role="dialog" aria-modal="true" aria-labelledby="journal-modal-title">
+    <div class="modal">
+      <div class="modal-handle" aria-hidden="true"></div>
+      <h2 class="modal-title" id="journal-modal-title">Nouvelle entrée</h2>
+      <textarea class="modal-textarea" id="journal-textarea"
+        placeholder="Raconte ta journée sociale... Qu'est-ce qui s'est passé ?" rows="5"
+        aria-label="Contenu de l'entrée"></textarea>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="Journal.closeModal()">Annuler</button>
+        <button class="btn-confirm" onclick="Journal.saveEntry()">Sauvegarder</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOAST NOTIFICATION ===== -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <i class="ti ti-star-filled" aria-hidden="true"></i>
+    <span id="toast-text"></span>
+  </div>
+
+  <!-- JS -->
+  <script src="js/data.js"></script>
+  <script src="js/defis.js"></script>
+  <script src="js/rank.js"></script>
+  <script src="js/journal.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

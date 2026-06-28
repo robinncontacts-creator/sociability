@@ -1,0 +1,190 @@
+/* ================================================
+   journal.css — Écran Journal & Modals
+   Sociability App
+   ================================================ */
+
+/* ---- Section humeur ---- */
+.mood-section {
+  margin: 16px 20px 0;
+  background: var(--card);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.mood-title {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.mood-btns {
+  display: flex;
+  gap: 6px;
+  justify-content: space-between;
+}
+
+.mood-btn {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: none;
+  cursor: pointer;
+  font-size: 22px;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  line-height: 1;
+}
+
+.mood-btn:hover {
+  border-color: rgba(167, 139, 250, 0.4);
+  background: var(--card2);
+}
+
+.mood-btn:active {
+  transform: scale(0.92);
+}
+
+.mood-btn.sel {
+  border-color: var(--purple-soft);
+  background: var(--purple-pale);
+}
+
+/* ---- Bouton nouvelle entrée ---- */
+.journal-actions {
+  padding: 14px 20px 0;
+  flex-shrink: 0;
+}
+
+.new-entry-btn {
+  width: 100%;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 14px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.new-entry-btn i { font-size: 18px; }
+
+.new-entry-btn:hover  { background: var(--purple-hover); }
+.new-entry-btn:active { transform: scale(0.985); }
+
+/* ---- Liste des entrées ---- */
+.journal-entries {
+  padding: 0 20px;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.journal-entries::-webkit-scrollbar { display: none; }
+
+/* ---- Carte d'entrée ---- */
+.entry-card {
+  background: var(--card);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.entry-date {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+
+.entry-mood {
+  font-size: 20px;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.entry-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* Tag défi associé */
+.entry-defi-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--purple-soft);
+  background: var(--purple-pale);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.entry-defi-tag i { font-size: 11px; }
+
+/* ---- État vide ---- */
+.journal-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-dim);
+}
+.journal-empty i {
+  font-size: 38px;
+  display: block;
+  margin-bottom: 12px;
+  color: var(--purple-pale);
+}
+.journal-empty p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ---- Stats journal (résumé en haut) ---- */
+.journal-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 14px 20px 0;
+  flex-shrink: 0;
+}
+
+.stat-card {
+  background: var(--card);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--purple-soft);
+}

@@ -1,0 +1,172 @@
+/* ================================================
+   defis.css — Écran Défis
+   Sociability App
+   ================================================ */
+
+/* ---- Onglets de filtre ---- */
+.tabs {
+  display: flex;
+  margin: 16px 20px 12px;
+  background: var(--card);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.tab {
+  flex: 1;
+  padding: 8px 4px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+
+.tab.active {
+  background: var(--purple);
+  color: #fff;
+}
+
+.tab:not(.active):hover {
+  color: var(--text);
+  background: var(--card2);
+}
+
+/* ---- Grille des défis ---- */
+.defi-grid {
+  padding: 0 20px;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.defi-grid::-webkit-scrollbar { display: none; }
+
+/* ---- Carte de défi ---- */
+.defi-item {
+  background: var(--card);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.1s;
+}
+
+.defi-item:hover {
+  border-color: rgba(167, 139, 250, 0.4);
+}
+
+.defi-item:active {
+  transform: scale(0.985);
+}
+
+/* Défi complété (style atténué) */
+.defi-item.done {
+  opacity: 0.5;
+}
+
+.defi-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.defi-emoji {
+  font-size: 28px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.defi-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.defi-name {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 3px;
+  color: var(--text);
+}
+
+.defi-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ---- Pilules de difficulté ---- */
+.diff-pill {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.diff-easy {
+  background: rgba(52, 211, 153, 0.12);
+  color: var(--green);
+}
+
+.diff-med {
+  background: rgba(251, 191, 36, 0.12);
+  color: var(--gold);
+}
+
+.diff-hard {
+  background: rgba(248, 113, 113, 0.12);
+  color: var(--red);
+}
+
+/* ---- Barre de progression du défi ---- */
+.defi-progress {
+  margin-top: 12px;
+}
+
+.defi-prog-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-bottom: 5px;
+}
+
+.prog-bar {
+  background: var(--card2);
+  border-radius: 20px;
+  height: 5px;
+  overflow: hidden;
+}
+
+.prog-fill {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, var(--purple), var(--cyan));
+  transition: width 0.6s ease;
+}
+
+/* ---- Message "aucun défi" ---- */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-dim);
+}
+.empty-state i {
+  font-size: 36px;
+  margin-bottom: 12px;
+  display: block;
+  color: var(--purple-pale);
+}
+.empty-state p {
+  font-size: 14px;
+  line-height: 1.6;
+}

@@ -1,0 +1,213 @@
+/* ================================================
+   rank.css — Écran Classement
+   Sociability App
+   ================================================ */
+
+/* ---- En-tête ---- */
+.rank-header {
+  padding: 20px 20px 0;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.rank-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ---- Podium Top 3 ---- */
+.podium {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px 20px 28px;
+  flex-shrink: 0;
+}
+
+.podium-place {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Avatar sur le podium */
+.podium-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  border: 2px solid transparent;
+  flex-shrink: 0;
+}
+
+.podium-place.p1 .podium-avatar {
+  width: 56px;
+  height: 56px;
+  font-size: 17px;
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.2);
+}
+
+.podium-place.p2 .podium-avatar {
+  background: rgba(148, 163, 184, 0.12);
+  color: #94A3B8;
+  border-color: #94A3B8;
+}
+
+.podium-place.p3 .podium-avatar {
+  background: rgba(205, 127, 50, 0.12);
+  color: #CD7F32;
+  border-color: #CD7F32;
+}
+
+.podium-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  max-width: 70px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.podium-xp {
+  font-size: 10px;
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+/* Bloc du podium (le "podium" physique) */
+.podium-block {
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  width: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.podium-place.p1 .podium-block {
+  height: 80px;
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--gold);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  border-bottom: none;
+}
+
+.podium-place.p2 .podium-block {
+  height: 58px;
+  background: rgba(148, 163, 184, 0.06);
+  color: #64748B;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-bottom: none;
+}
+
+.podium-place.p3 .podium-block {
+  height: 44px;
+  background: rgba(205, 127, 50, 0.07);
+  color: #926031;
+  border: 1px solid rgba(205, 127, 50, 0.15);
+  border-bottom: none;
+}
+
+/* ---- Liste de classement ---- */
+.rank-list {
+  padding: 0 20px;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.rank-list::-webkit-scrollbar { display: none; }
+
+.rank-item {
+  background: var(--card);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+  transition: border-color 0.15s;
+}
+
+/* Entrée "c'est moi" */
+.rank-item.me {
+  border-color: var(--purple);
+  background: var(--purple-pale);
+}
+
+.rank-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-dim);
+  width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.rank-item.me .rank-num {
+  color: var(--purple-soft);
+}
+
+.rank-av {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.rank-name {
+  flex: 1;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.you-badge {
+  font-size: 10px;
+  background: var(--purple);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.rank-xp {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--cyan);
+  flex-shrink: 0;
+}
+
+.rank-delta {
+  font-size: 11px;
+  color: var(--green);
+  flex-shrink: 0;
+}
+.rank-delta.down {
+  color: var(--red);
+}
