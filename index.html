@@ -198,6 +198,52 @@
     </div>
   </div>
 
+  <!-- ===== MODAL : DÉBLOCAGE PREMIUM ===== -->
+  <div class="modal-bg" id="unlock-modal" role="dialog" aria-modal="true" aria-labelledby="unlock-modal-title">
+    <div class="modal">
+      <div class="modal-handle" aria-hidden="true"></div>
+
+      <div class="unlock-header">
+        <div class="unlock-lock-icon">🔒</div>
+        <h2 class="modal-title" id="unlock-modal-title">Défi verrouillé</h2>
+        <div class="unlock-defi-name" id="unlock-defi-name"></div>
+        <div class="unlock-defi-level" id="unlock-defi-level"></div>
+      </div>
+
+      <div class="unlock-options">
+        <!-- Option payer -->
+        <button class="btn-pay" onclick="Defis.simulatePay()">
+          <i class="ti ti-lock-open" aria-hidden="true"></i>
+          <span>
+            Débloquer tous les niveaux
+            <span class="btn-pay-sub">Accès à vie · <span id="unlock-price"></span></span>
+          </span>
+        </button>
+
+        <div class="unlock-or">ou</div>
+
+        <!-- Option code promo -->
+        <div>
+          <div class="code-input-wrap">
+            <input class="code-input" id="unlock-code-input" type="text"
+              placeholder="Code promo" maxlength="20"
+              aria-label="Code de déblocage" />
+            <button class="btn-code" onclick="Defis.submitCode()">OK</button>
+          </div>
+          <div class="code-error" id="unlock-code-error" role="alert"></div>
+        </div>
+      </div>
+
+      <p class="unlock-footnote">
+        Tu peux aussi continuer à progresser naturellement<br>et débloquer les défis en montant de niveau.
+      </p>
+
+      <div class="modal-actions" style="margin-top:16px">
+        <button class="btn-cancel" onclick="Defis.closeUnlockModal()">Fermer</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ===== TOAST NOTIFICATION ===== -->
   <div class="toast" id="toast" role="status" aria-live="polite">
     <i class="ti ti-star-filled" aria-hidden="true"></i>
