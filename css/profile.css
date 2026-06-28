@@ -1,0 +1,223 @@
+/* ================================================
+   profile.css — Écran Profil
+   Sociability App
+   ================================================ */
+
+/* ---- Badge premium ---- */
+.premium-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, var(--purple), var(--cyan-dark));
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* ---- Hero profil ---- */
+.prof-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 20px 16px;
+  gap: 10px;
+}
+
+.prof-avatar-wrap {
+  position: relative;
+  width: 72px;
+  height: 72px;
+}
+
+.prof-avatar-inner {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 56px;
+  height: 56px;
+  background: var(--purple-pale);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--purple-soft);
+}
+
+/* Nom */
+.prof-name-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.prof-name-display {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.prof-name-input {
+  background: var(--card);
+  border: 2px solid var(--purple-soft);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+  width: 200px;
+}
+
+.prof-name-input.input-error {
+  border-color: var(--red);
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0);   }
+  25%       { transform: translateX(-6px); }
+  75%       { transform: translateX(6px);  }
+}
+
+.prof-name-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.prof-name-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: transform 0.1s;
+}
+.prof-name-btn:active { transform: scale(0.9); }
+.prof-name-btn.confirm { background: var(--green);   color: #052e16; }
+.prof-name-btn.cancel  { background: var(--card2);   color: var(--text-muted); }
+
+.prof-edit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--purple-soft);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 20px;
+  transition: background 0.15s;
+}
+.prof-edit-btn:hover { background: var(--purple-pale); }
+
+/* Niveau */
+.prof-level-wrap {
+  text-align: center;
+}
+
+.prof-level-name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--purple-soft);
+}
+
+.prof-level-num {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+/* Barre XP profil */
+.prof-xp-bar-wrap {
+  width: 100%;
+  max-width: 300px;
+}
+
+.prof-xp-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* ---- Grille de stats ---- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  padding: 0 20px;
+  margin-bottom: 4px;
+}
+
+.stat-tile {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 10px;
+  text-align: center;
+}
+
+.stat-tile-val {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--purple-soft);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-tile-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+/* ---- Section notifications ---- */
+.notif-section {
+  margin: 0 20px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.notif-icon { font-size: 24px; }
+
+.notif-info { flex: 1; }
+.notif-info-title { font-size: 14px; font-weight: 600; }
+.notif-info-sub   { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+.notif-toggle {
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: none;
+  background: var(--purple);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.notif-toggle:hover { background: var(--purple-hover); }
+.notif-toggle.on    { background: var(--card2); color: var(--text-muted); border: 1px solid var(--border); }
