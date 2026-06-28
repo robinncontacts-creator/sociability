@@ -12,8 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-
-  <!-- Tabler Icons -->
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
 
   <!-- CSS -->
@@ -23,12 +22,14 @@
   <link rel="stylesheet" href="css/defis.css" />
   <link rel="stylesheet" href="css/rank.css" />
   <link rel="stylesheet" href="css/journal.css" />
+  <link rel="stylesheet" href="css/onboarding.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+  <link rel="stylesheet" href="css/badges.css" />
 </head>
 <body>
 
-  <!-- ===== ÉCRAN : ACCUEIL ===== -->
+  <!-- ===== ACCUEIL ===== -->
   <div class="screen active" id="s-home" role="main">
-
     <div class="topbar">
       <div class="logo">Sociability</div>
       <div class="avatar-ring" id="avatar-ring" title="Mon profil">
@@ -42,15 +43,12 @@
         <div class="avatar-inner" id="avatar-initials">R</div>
       </div>
     </div>
-
     <div class="hero-section">
       <div class="greeting" id="greeting">Bonjour 👋</div>
       <div class="hero-title">Prêt pour ton<br><span class="accent">défi du jour ?</span></div>
     </div>
-
-    <!-- Streak + niveau -->
     <div class="streak-bar">
-      <div class="streak-icon" aria-hidden="true">🔥</div>
+      <div class="streak-icon">🔥</div>
       <div class="streak-info">
         <div class="streak-label">Série en cours</div>
         <div class="streak-val" id="streak-count">0 jour</div>
@@ -60,137 +58,131 @@
         <div class="level-val" id="level-display">Lv. 1</div>
       </div>
     </div>
-
-    <!-- Barre XP -->
     <div class="xp-bar-wrap">
       <div class="xp-labels">
         <span id="xp-current-label">XP : 0</span>
         <span id="xp-next-label">→ Lv. 2</span>
       </div>
-      <div class="xp-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="xp-track">
+      <div class="xp-track" id="xp-track">
         <div class="xp-fill" id="xp-fill" style="width:0%"></div>
       </div>
     </div>
-
-    <!-- Défis du jour -->
     <div class="section-title">Défis du jour</div>
     <div id="daily-challenges-list"></div>
-
   </div>
 
-  <!-- ===== ÉCRAN : DÉFIS ===== -->
+  <!-- ===== DÉFIS ===== -->
   <div class="screen" id="s-defis">
-
     <div class="topbar">
       <div class="page-title">Défis</div>
     </div>
-
     <div class="tabs" role="tablist">
-      <button class="tab active" role="tab" aria-selected="true" onclick="App.switchTab(this,'tous')">Tous</button>
+      <button class="tab active" role="tab" aria-selected="true"  onclick="App.switchTab(this,'tous')">Tous</button>
       <button class="tab" role="tab" aria-selected="false" onclick="App.switchTab(this,'social')">Social</button>
       <button class="tab" role="tab" aria-selected="false" onclick="App.switchTab(this,'courage')">Courage</button>
       <button class="tab" role="tab" aria-selected="false" onclick="App.switchTab(this,'groupe')">Groupe</button>
     </div>
-
     <div class="defi-grid" id="defi-grid"></div>
-
   </div>
 
-  <!-- ===== ÉCRAN : CLASSEMENT ===== -->
+  <!-- ===== CLASSEMENT ===== -->
   <div class="screen" id="s-rank">
-
     <div class="rank-header">
       <div class="page-title">🏆 Classement</div>
       <div class="rank-subtitle" id="rank-subtitle">Cette semaine</div>
     </div>
-
-    <div class="podium" id="podium" aria-label="Top 3"></div>
-
+    <div class="podium" id="podium"></div>
     <div class="rank-list" id="rank-list"></div>
-
   </div>
 
-  <!-- ===== ÉCRAN : JOURNAL ===== -->
+  <!-- ===== JOURNAL ===== -->
   <div class="screen" id="s-journal">
-
     <div class="topbar">
       <div>
         <div class="page-title">Mon journal</div>
         <div class="page-subtitle">Trace ton chemin social</div>
       </div>
     </div>
-
-    <!-- Humeur du jour -->
     <div class="mood-section">
       <div class="mood-title">Comment tu te sens aujourd'hui ?</div>
-      <div class="mood-btns" role="group" aria-label="Sélectionner ton humeur">
-        <button class="mood-btn" aria-label="Anxieux" onclick="Journal.selectMood(this,'😰')">😰</button>
-        <button class="mood-btn" aria-label="Triste" onclick="Journal.selectMood(this,'😟')">😟</button>
-        <button class="mood-btn" aria-label="Neutre" onclick="Journal.selectMood(this,'😐')">😐</button>
-        <button class="mood-btn sel" aria-label="Bien" onclick="Journal.selectMood(this,'🙂')">🙂</button>
-        <button class="mood-btn" aria-label="Super" onclick="Journal.selectMood(this,'😄')">😄</button>
+      <div class="mood-btns" role="group">
+        <button class="mood-btn" onclick="Journal.selectMood(this,'😰')">😰</button>
+        <button class="mood-btn" onclick="Journal.selectMood(this,'😟')">😟</button>
+        <button class="mood-btn" onclick="Journal.selectMood(this,'😐')">😐</button>
+        <button class="mood-btn sel" onclick="Journal.selectMood(this,'🙂')">🙂</button>
+        <button class="mood-btn" onclick="Journal.selectMood(this,'😄')">😄</button>
       </div>
     </div>
-
     <div class="journal-actions">
       <button class="new-entry-btn" onclick="Journal.openModal()">
-        <i class="ti ti-pencil-plus" aria-hidden="true"></i> Écrire une entrée
+        <i class="ti ti-pencil-plus"></i> Écrire une entrée
       </button>
     </div>
-
     <div class="section-title">Entrées récentes</div>
     <div class="journal-entries" id="journal-list"></div>
-
   </div>
 
   <!-- ===== NAVIGATION ===== -->
   <nav class="bottom-nav" aria-label="Navigation principale">
-    <button class="nav-btn active" onclick="App.nav('home', this)" aria-label="Accueil">
-      <i class="ti ti-home" aria-hidden="true"></i>
-      <span>Accueil</span>
-    </button>
-    <button class="nav-btn" onclick="App.nav('defis', this)" aria-label="Défis">
-      <i class="ti ti-flame" aria-hidden="true"></i>
-      <span>Défis</span>
-    </button>
-    <button class="nav-btn" onclick="App.nav('rank', this)" aria-label="Classement">
-      <i class="ti ti-trophy" aria-hidden="true"></i>
-      <span>Classement</span>
-    </button>
-    <button class="nav-btn" onclick="App.nav('journal', this)" aria-label="Journal">
-      <i class="ti ti-notebook" aria-hidden="true"></i>
-      <span>Journal</span>
-    </button>
+    <button class="nav-btn active" onclick="App.nav('home',this)"    aria-label="Accueil"><i class="ti ti-home"></i><span>Accueil</span></button>
+    <button class="nav-btn"        onclick="App.nav('defis',this)"   aria-label="Défis"><i class="ti ti-flame"></i><span>Défis</span></button>
+    <button class="nav-btn"        onclick="App.nav('rank',this)"    aria-label="Classement"><i class="ti ti-trophy"></i><span>Classement</span></button>
+    <button class="nav-btn"        onclick="App.nav('journal',this)" aria-label="Journal"><i class="ti ti-notebook"></i><span>Journal</span></button>
   </nav>
 
   <!-- ===== MODAL : DÉFI ===== -->
-  <div class="modal-bg" id="defi-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-bg" id="defi-modal" role="dialog" aria-modal="true">
     <div class="modal">
-      <div class="modal-handle" aria-hidden="true"></div>
+      <div class="modal-handle"></div>
       <div class="modal-emoji" id="modal-emoji"></div>
       <h2 class="modal-title" id="modal-title"></h2>
       <p class="modal-desc" id="modal-desc"></p>
-      <textarea class="modal-textarea" id="modal-textarea"
-        placeholder="Comment ça s'est passé ? (optionnel)" rows="3"
-        aria-label="Note sur le défi"></textarea>
+      <textarea class="modal-textarea" id="modal-textarea" placeholder="Comment ça s'est passé ? (optionnel)" rows="3"></textarea>
       <div class="modal-xp" id="modal-xp"></div>
       <div class="modal-actions">
         <button class="btn-cancel" onclick="Defis.closeModal()">Annuler</button>
-        <button class="btn-confirm" id="modal-confirm-btn" onclick="Defis.confirmDefi()">
-          Marquer comme fait ✓
+        <button class="btn-confirm" id="modal-confirm-btn" onclick="Defis.confirmDefi()">Marquer comme fait ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL : DÉBLOCAGE PREMIUM ===== -->
+  <div class="modal-bg" id="unlock-modal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="unlock-header">
+        <div class="unlock-lock-icon">🔒</div>
+        <h2 class="modal-title">Défi verrouillé</h2>
+        <div class="unlock-defi-name"  id="unlock-defi-name"></div>
+        <div class="unlock-defi-level" id="unlock-defi-level"></div>
+      </div>
+      <div class="unlock-options">
+        <button class="btn-pay" onclick="Defis.simulatePay()">
+          <i class="ti ti-lock-open"></i>
+          <span>Débloquer tous les niveaux<span class="btn-pay-sub">Accès à vie · <span id="unlock-price"></span></span></span>
         </button>
+        <div class="unlock-or">ou</div>
+        <div>
+          <div class="code-input-wrap">
+            <input class="code-input" id="unlock-code-input" type="text" placeholder="Code promo" maxlength="20" />
+            <button class="btn-code" onclick="Defis.submitCode()">OK</button>
+          </div>
+          <div class="code-error" id="unlock-code-error" role="alert"></div>
+        </div>
+      </div>
+      <p class="unlock-footnote">Tu peux aussi continuer à progresser naturellement<br>et débloquer les défis en montant de niveau.</p>
+      <div class="modal-actions" style="margin-top:16px">
+        <button class="btn-cancel" onclick="Defis.closeUnlockModal()">Fermer</button>
       </div>
     </div>
   </div>
 
   <!-- ===== MODAL : JOURNAL ===== -->
-  <div class="modal-bg" id="journal-modal" role="dialog" aria-modal="true" aria-labelledby="journal-modal-title">
+  <div class="modal-bg" id="journal-modal" role="dialog" aria-modal="true">
     <div class="modal">
-      <div class="modal-handle" aria-hidden="true"></div>
-      <h2 class="modal-title" id="journal-modal-title">Nouvelle entrée</h2>
-      <textarea class="modal-textarea" id="journal-textarea"
-        placeholder="Raconte ta journée sociale... Qu'est-ce qui s'est passé ?" rows="5"
-        aria-label="Contenu de l'entrée"></textarea>
+      <div class="modal-handle"></div>
+      <h2 class="modal-title">Nouvelle entrée</h2>
+      <textarea class="modal-textarea" id="journal-textarea" placeholder="Raconte ta journée sociale..." rows="5"></textarea>
       <div class="modal-actions">
         <button class="btn-cancel" onclick="Journal.closeModal()">Annuler</button>
         <button class="btn-confirm" onclick="Journal.saveEntry()">Sauvegarder</button>
@@ -198,60 +190,24 @@
     </div>
   </div>
 
-  <!-- ===== MODAL : DÉBLOCAGE PREMIUM ===== -->
-  <div class="modal-bg" id="unlock-modal" role="dialog" aria-modal="true" aria-labelledby="unlock-modal-title">
-    <div class="modal">
-      <div class="modal-handle" aria-hidden="true"></div>
-
-      <div class="unlock-header">
-        <div class="unlock-lock-icon">🔒</div>
-        <h2 class="modal-title" id="unlock-modal-title">Défi verrouillé</h2>
-        <div class="unlock-defi-name" id="unlock-defi-name"></div>
-        <div class="unlock-defi-level" id="unlock-defi-level"></div>
-      </div>
-
-      <div class="unlock-options">
-        <!-- Option payer -->
-        <button class="btn-pay" onclick="Defis.simulatePay()">
-          <i class="ti ti-lock-open" aria-hidden="true"></i>
-          <span>
-            Débloquer tous les niveaux
-            <span class="btn-pay-sub">Accès à vie · <span id="unlock-price"></span></span>
-          </span>
-        </button>
-
-        <div class="unlock-or">ou</div>
-
-        <!-- Option code promo -->
-        <div>
-          <div class="code-input-wrap">
-            <input class="code-input" id="unlock-code-input" type="text"
-              placeholder="Code promo" maxlength="20"
-              aria-label="Code de déblocage" />
-            <button class="btn-code" onclick="Defis.submitCode()">OK</button>
-          </div>
-          <div class="code-error" id="unlock-code-error" role="alert"></div>
-        </div>
-      </div>
-
-      <p class="unlock-footnote">
-        Tu peux aussi continuer à progresser naturellement<br>et débloquer les défis en montant de niveau.
-      </p>
-
-      <div class="modal-actions" style="margin-top:16px">
-        <button class="btn-cancel" onclick="Defis.closeUnlockModal()">Fermer</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== TOAST NOTIFICATION ===== -->
+  <!-- ===== TOAST ===== -->
   <div class="toast" id="toast" role="status" aria-live="polite">
-    <i class="ti ti-star-filled" aria-hidden="true"></i>
+    <i class="ti ti-star-filled"></i>
     <span id="toast-text"></span>
   </div>
 
-  <!-- JS -->
+  <!-- ===== SCRIPTS ===== -->
+  <!-- Firebase (type=module car on utilise les imports ES) -->
+  <script type="module" src="js/firebase.js"></script>
+
+  <!-- App scripts (ordre important) -->
   <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/badges.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/onboarding.js"></script>
+  <script src="js/profile.js"></script>
   <script src="js/defis.js"></script>
   <script src="js/rank.js"></script>
   <script src="js/journal.js"></script>
