@@ -1,0 +1,145 @@
+/* ================================================
+   badges.css — Badges & Trophées
+   Sociability App
+   ================================================ */
+
+/* ---- Section catégorie ---- */
+.badge-category {
+  margin-bottom: 20px;
+}
+
+.badge-cat-title {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+/* ---- Grille de badges ---- */
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+/* ---- Badge individuel ---- */
+.badge-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 8px;
+  text-align: center;
+  position: relative;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+/* Badge débloqué */
+.badge-item.unlocked {
+  border-color: rgba(167,139,250,0.4);
+  background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(34,211,238,0.04));
+}
+
+.badge-item.unlocked:hover {
+  transform: translateY(-2px);
+  border-color: var(--purple-soft);
+}
+
+/* Badge verrouillé */
+.badge-item.locked {
+  opacity: 0.45;
+  filter: grayscale(0.8);
+}
+
+.badge-emoji {
+  font-size: 28px;
+  margin-bottom: 6px;
+  display: block;
+  line-height: 1;
+}
+
+.badge-name {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.badge-item.unlocked .badge-name {
+  color: var(--text);
+}
+
+/* Coche "débloqué" */
+.badge-check {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 16px;
+  height: 16px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  color: #052e16;
+  font-weight: 700;
+}
+
+/* ---- Toast badge spécial (plus grand) ---- */
+.badge-toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--card);
+  border: 1px solid var(--purple-soft);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 300;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  max-width: 320px;
+  width: calc(100% - 40px);
+}
+
+.badge-toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+.badge-toast-emoji {
+  font-size: 36px;
+  flex-shrink: 0;
+}
+
+.badge-toast-info {
+  flex: 1;
+}
+
+.badge-toast-label {
+  font-size: 10px;
+  color: var(--purple-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.badge-toast-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.badge-toast-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  line-height: 1.4;
+}
