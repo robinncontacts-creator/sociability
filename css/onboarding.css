@@ -1,0 +1,155 @@
+/* ================================================
+   onboarding.css — Écran première visite
+   Sociability App
+   ================================================ */
+
+.ob-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 32px 48px;
+  overflow: hidden;
+}
+
+/* Glow de fond animé */
+.ob-bg-glow {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1);   }
+  50%       { opacity: 1;   transform: translateX(-50%) scale(1.1); }
+}
+
+/* Points de progression */
+.ob-dots {
+  display: flex;
+  gap: 8px;
+  z-index: 1;
+}
+
+.ob-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.ob-dot.active {
+  width: 20px;
+  border-radius: 3px;
+  background: var(--purple-soft);
+}
+
+/* Contenu central */
+.ob-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  z-index: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.ob-emoji {
+  font-size: 72px;
+  line-height: 1;
+  filter: drop-shadow(0 0 20px rgba(124,58,237,0.4));
+}
+
+.ob-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.25;
+  white-space: pre-line;
+}
+
+.ob-desc {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 300px;
+}
+
+/* Champ prénom */
+.ob-name-wrap {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 8px;
+}
+
+.ob-name-input {
+  width: 100%;
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.ob-name-input:focus {
+  border-color: var(--purple-soft);
+}
+
+.ob-name-input::placeholder {
+  color: var(--text-dim);
+  font-weight: 400;
+  font-family: var(--font-body);
+  font-size: 15px;
+}
+
+.ob-name-error {
+  color: var(--red);
+  font-size: 12px;
+  text-align: center;
+  margin-top: 6px;
+  min-height: 18px;
+}
+
+/* Bouton CTA */
+.ob-footer {
+  width: 100%;
+  z-index: 1;
+}
+
+.ob-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  border: none;
+  background: linear-gradient(135deg, var(--purple), var(--cyan-dark));
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 17px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  box-shadow: 0 4px 24px rgba(124,58,237,0.4);
+}
+
+.ob-btn:hover  { opacity: 0.92; }
+.ob-btn:active { transform: scale(0.97); }
