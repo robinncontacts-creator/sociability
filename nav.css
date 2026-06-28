@@ -1,0 +1,80 @@
+/* ================================================
+   nav.css — Barre de navigation fixe en bas
+   Sociability App
+   ================================================ */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  background: rgba(15, 15, 26, 0.96);
+  border-top: 1px solid var(--border);
+  display: flex;
+  z-index: 100;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 10px 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--text-dim);
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-btn i {
+  font-size: 22px;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-btn span {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  font-family: var(--font-body);
+}
+
+/* État actif */
+.nav-btn.active {
+  color: var(--purple-soft);
+}
+
+.nav-btn.active i {
+  transform: scale(1.1);
+}
+
+/* Point d'indication actif */
+.nav-btn.active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 2px;
+  background: var(--purple-soft);
+  border-radius: 0 0 4px 4px;
+}
+
+/* Hover desktop */
+@media (hover: hover) {
+  .nav-btn:not(.active):hover {
+    color: var(--text-muted);
+  }
+  .nav-btn:not(.active):hover i {
+    transform: scale(1.05);
+  }
+}
